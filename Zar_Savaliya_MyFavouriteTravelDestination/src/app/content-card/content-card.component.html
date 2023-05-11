@@ -1,0 +1,8 @@
+<div class="content-card">
+    <h1>Content List</h1>
+    <div class="content-list">
+      <div *ngFor="let contentItem of contentList.content; let i = index">  
+        <div [innerHTML]="contentList.getContentHtml(i)"></div>
+      </div>
+    </div>
+  </div>
