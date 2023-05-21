@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { ContentList } from '../helper-files/content-list';
 @Component({
   selector: 'app-content-card',
   templateUrl: './content-card.component.html',
   styleUrls: ['./content-card.component.scss']
 })
 export class ContentCardComponent {
-  contentList: ContentList;
+  contentList: any = [];
 
   constructor() {
-    this.contentList = new ContentList();
     this.contentList.add({
       id: 1,
       title: 'Vancouver',

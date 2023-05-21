@@ -1,0 +1,16 @@
+<p>content-list works!</p>
+
+
+<div *ngFor="let contentItem of contentListArray; let isFirst = first"
+     [style.border]="isFirst ? '2px solid black' : '1px solid black'"
+     [style.padding]="'10px'"
+     [style.margin]="'10px'">
+  <h2>{{ contentItem.title }}</h2>
+  <img *ngIf="contentItem.imgURL" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
+  <p>{{ contentItem.description }}</p>
+  <p>{{ contentItem.creator }}</p>
+  <p *ngIf="contentItem.type">{{ contentItem.type }}</p>
+  <ul *ngIf="contentItem.tags">
+    <li *ngFor="let tag of contentItem.tags">{{ tag }}</li>
+  </ul>
+</div>
