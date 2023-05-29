@@ -1,11 +1,50 @@
 <p>content-list works!</p>
 
+<div>
+  <label for="searchTitle">Search Title:</label>
+  <input type="text" id="searchTitle" [(ngModel)]="searchTitle">
+  <button (click)="searchContentItem()">Search</button>
+  <p [style.color]="isContentFound ? 'green' : 'red'">{{ searchResult }}</p>
+</div>
 
-<div *ngFor="let contentItem of contentListArray; let isFirst = first"
+<h3>Content with no type</h3>
+<div *ngFor="let contentItem of contentListArray | contentFilter : ''; let isFirst = first; even as isEven"
      [style.border]="isFirst ? '2px solid black' : '1px solid black'"
      [style.padding]="'10px'"
-     [style.margin]="'10px'">
-  <h2>{{ contentItem.title }}</h2>
+     [style.margin]="'10px'"
+     [ngStyle]="{ 'background': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'white' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
+  <h2 class="content-card" [ngClass]="{ 'highlighted': isContentFound && contentItem.title === searchTitle }">{{ contentItem.title }}</h2>
+  <img *ngIf="contentItem.imgURL" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
+  <p>{{ contentItem.description }}</p>
+  <p>{{ contentItem.creator }}</p>
+  <p *ngIf="contentItem.type">{{ contentItem.type }}</p>
+  <ul *ngIf="contentItem.tags">
+    <li *ngFor="let tag of contentItem.tags">{{ tag }}</li>
+  </ul>
+</div>
+
+<h3>Content with type beach</h3>
+<div *ngFor="let contentItem of contentListArray | contentFilter : 'beach'; let isFirst = first; even as isEven"
+     [style.border]="isFirst ? '3px solid black' : '1px solid black'"
+     [style.padding]="'10px'"
+     [style.margin]="'10px'"
+     [ngStyle]="{ 'background': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'white' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
+     <h2 class="content-card" [ngClass]="{ 'highlighted': isContentFound && contentItem.title === searchTitle }">{{ contentItem.title }}</h2>
+  <img *ngIf="contentItem.imgURL" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
+  <p>{{ contentItem.description }}</p>
+  <p>{{ contentItem.creator }}</p>
+  <p *ngIf="contentItem.type">{{ contentItem.type }}</p>
+  <ul *ngIf="contentItem.tags">
+    <li *ngFor="let tag of contentItem.tags">{{ tag }}</li>
+  </ul>
+</div>
+<h3>Content with type Nature</h3>
+<div *ngFor="let contentItem of contentListArray | contentFilter : 'Nature'; let isFirst = first;"
+     [style.border]="isFirst ? '2px solid black' : '1px solid black'"
+     [style.padding]="'10px'"
+     [style.margin]="'10px'"
+     [ngStyle]="{ 'background': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'white' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
+  <h2 class="content-card" [ngClass]="{ 'highlighted': isContentFound && contentItem.title === searchTitle }">{{ contentItem.title }}</h2>
   <img *ngIf="contentItem.imgURL" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
   <p>{{ contentItem.description }}</p>
   <p>{{ contentItem.creator }}</p>

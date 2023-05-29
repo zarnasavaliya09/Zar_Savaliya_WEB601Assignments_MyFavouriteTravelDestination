@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-list.component.scss']
 })
 export class ContentListComponent {
+
+  highlightedItemIndex: number = -1;
+  searchTitle: string = '';
+  searchResult: string = '';
+  isContentFound: boolean = false;
+
   contentListArray = [
     {
       id: 1,
@@ -61,10 +67,26 @@ export class ContentListComponent {
       type: 'park',
       tags: ['park', 'cycling', 'water']
     },
+    {
+      id: 7,
+      title: 'Cypress Mountain',
+      description: 'Cypress Mountain in West Vancouver, B.C., Canada. Cypress is only 30 minutes from downtown Vancouver.',
+      creator: 'John Lennon, Paul McCartney,and Ringo Starr',
+      imgURL: 'https://www.straight.com/files/v3/styles/gs_feature/public/images/17/11/cypress_c_fb.jpg?itok=K6dkj6kW',
+      type: 'Mountain',
+      tags: ['hiking', 'snow']
+    },
   ];
 
   displayContent(contentItem: any) {
     console.log('Content ID:', contentItem.id);
     console.log('Content Title:', contentItem.title);
+  }
+
+  public searchContentItem() {
+    const foundItem = this.contentListArray.find(item => item.title === this.searchTitle);
+    this.isContentFound = !!foundItem;
+    this.searchResult = this.isContentFound ? 'Content item found!' : 'Content item not found!';
+ 
   }
 }
