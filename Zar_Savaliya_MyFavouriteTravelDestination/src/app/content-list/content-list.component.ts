@@ -18,7 +18,7 @@ export class ContentListComponent {
       title: 'Vancouver',
       description: 'The City of Vancouver is a coastal, seaport city on the mainland of British Columbia. Located on the western half of the Burrard Peninsula, Vancouver is bounded to the north by English Bay and the Burrard Inlet and to the south by the Fraser River.',
       creator: 'F. Scott Fitzgerald',
-      imgURL: 'https://i.imgur.com/lDVWa9e.jpeg',
+      imgURL: '',
       type: 'Nature',
       tags: ['nature', 'mountains', 'waterfall']
     },

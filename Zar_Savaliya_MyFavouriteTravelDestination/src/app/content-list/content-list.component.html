@@ -8,48 +8,56 @@
 </div>
 
 <h3>Content with no type</h3>
-<div *ngFor="let contentItem of contentListArray | contentFilter : ''; let isFirst = first; even as isEven"
+<div *ngFor="let contentItem of contentListArray | contentFilter : ''; let isFirst = first; even as isEven" 
      [style.border]="isFirst ? '2px solid black' : '1px solid black'"
      [style.padding]="'10px'"
      [style.margin]="'10px'"
-     [ngStyle]="{ 'background': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'white' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
+     [ngStyle]="{ 'color': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'pink' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
   <h2 class="content-card" [ngClass]="{ 'highlighted': isContentFound && contentItem.title === searchTitle }">{{ contentItem.title }}</h2>
-  <img *ngIf="contentItem.imgURL" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
+  <img *ngIf="contentItem.imgURL; else defaultImage" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
   <p>{{ contentItem.description }}</p>
   <p>{{ contentItem.creator }}</p>
-  <p *ngIf="contentItem.type">{{ contentItem.type }}</p>
+  <p *ngIf="contentItem.type" appHoverAffect [affectStyle]="'underline'" >{{ contentItem.type }}</p>
   <ul *ngIf="contentItem.tags">
-    <li *ngFor="let tag of contentItem.tags">{{ tag }}</li>
+    <li *ngFor="let tag of contentItem.tags" class="tag" appHoverAffect [affectStyle]="'bold'">{{ tag }}</li>
   </ul>
+  <ng-template #defaultImage>
+    <img src="../../assets/image/wallpaper.jpg" width="100%" height="70%">
+  </ng-template>
 </div>
 
+
 <h3>Content with type beach</h3>
-<div *ngFor="let contentItem of contentListArray | contentFilter : 'beach'; let isFirst = first; even as isEven"
+<div *ngFor="let contentItem of contentListArray | contentFilter : 'beach'; let isFirst = first; even as isEven" 
      [style.border]="isFirst ? '3px solid black' : '1px solid black'"
-     [style.padding]="'10px'"
-     [style.margin]="'10px'"
-     [ngStyle]="{ 'background': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'white' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
+     [ngStyle]="{ 'color': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'white' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
      <h2 class="content-card" [ngClass]="{ 'highlighted': isContentFound && contentItem.title === searchTitle }">{{ contentItem.title }}</h2>
-  <img *ngIf="contentItem.imgURL" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
+  <img *ngIf="contentItem.imgURL; else defaultImage" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
   <p>{{ contentItem.description }}</p>
   <p>{{ contentItem.creator }}</p>
-  <p *ngIf="contentItem.type">{{ contentItem.type }}</p>
+  <p *ngIf="contentItem.type" appHoverAffect [affectStyle]="'underline'">{{ contentItem.type }}</p>
   <ul *ngIf="contentItem.tags">
-    <li *ngFor="let tag of contentItem.tags">{{ tag }}</li>
+    <li *ngFor="let tag of contentItem.tags" class="tag" appHoverAffect [affectStyle]="'bold'">{{ tag }}</li>
   </ul>
+  <ng-template #defaultImage>
+    <img src="../../assets/image/wallpaper.jpg" width="100%" height="70%">
+  </ng-template>
 </div>
+
 <h3>Content with type Nature</h3>
 <div *ngFor="let contentItem of contentListArray | contentFilter : 'Nature'; let isFirst = first;"
      [style.border]="isFirst ? '2px solid black' : '1px solid black'"
-     [style.padding]="'10px'"
-     [style.margin]="'10px'"
-     [ngStyle]="{ 'background': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'white' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
+     
+     [ngStyle]="{ 'color': contentItem.type === 'beach' ? 'green' : contentItem.type === 'Nature' ? 'blue' : contentItem.type === 'Mountains' ? 'white' : contentItem.type === 'park' ? 'yellow' : 'grey' }">
   <h2 class="content-card" [ngClass]="{ 'highlighted': isContentFound && contentItem.title === searchTitle }">{{ contentItem.title }}</h2>
-  <img *ngIf="contentItem.imgURL" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
+  <img *ngIf="contentItem.imgURL; else defaultImage" [src]="contentItem.imgURL" (click)="displayContent(contentItem)" height="700px" width="100%">
   <p>{{ contentItem.description }}</p>
   <p>{{ contentItem.creator }}</p>
-  <p *ngIf="contentItem.type">{{ contentItem.type }}</p>
+  <p *ngIf="contentItem.type" appHoverAffect [affectStyle]="'underline'">{{ contentItem.type }}</p>
   <ul *ngIf="contentItem.tags">
-    <li *ngFor="let tag of contentItem.tags">{{ tag }}</li>
+    <li *ngFor="let tag of contentItem.tags" class="tag" appHoverAffect [affectStyle]="'bold'">{{ tag }}</li>
   </ul>
+  <ng-template #defaultImage>
+    <img src="../../assets/image/wallpaper.jpg" width="100%" height="70%">
+  </ng-template>
 </div>
