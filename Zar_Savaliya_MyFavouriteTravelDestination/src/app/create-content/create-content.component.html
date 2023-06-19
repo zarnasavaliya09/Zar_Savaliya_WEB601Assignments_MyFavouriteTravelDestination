@@ -1,0 +1,14 @@
+<div>
+    <input type="text" [(ngModel)]="id" placeholder="Content ID">
+    <input type="text" [(ngModel)]="title" placeholder="Title">
+    <input type="text" [(ngModel)]="description" placeholder="Description">
+    <input type="text" [(ngModel)]="creator" placeholder="Creator">
+    <input type="text" [(ngModel)]="type" placeholder="Type">
+
+    <!-- Add other input fields for necessary content fields -->
+    <button (click)="addContent()">Add Content</button>
+    <p class="error" *ngIf="requiredFieldMessage">{{ requiredFieldMessage }}</p>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  </div>
+  

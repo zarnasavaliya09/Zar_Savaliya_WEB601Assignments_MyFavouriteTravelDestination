@@ -11,8 +11,12 @@ export class ContentListComponent {
   searchTitle: string = '';
   searchResult: string = '';
   isContentFound: boolean = false;
+  contentListArray: any[] = [];
+ 
 
-  contentListArray = [
+  constructor() {
+    // Initialize content list if needed
+     this.contentListArray = [
     {
       id: 1,
       title: 'Vancouver',
@@ -77,6 +81,7 @@ export class ContentListComponent {
       tags: ['hiking', 'snow']
     },
   ];
+  }
 
   displayContent(contentItem: any) {
     console.log('Content ID:', contentItem.id);
@@ -88,5 +93,14 @@ export class ContentListComponent {
     this.isContentFound = !!foundItem;
     this.searchResult = this.isContentFound ? 'Content item found!' : 'Content item not found!';
  
+  }
+
+ 
+
+  receiveNewContent(newContent: any): void {
+    // Add the new content item to the content list
+    console.log("newContent",newContent);
+    this.contentListArray.push(newContent);
+    console.log('contentListArray',this.contentListArray);
   }
 }
