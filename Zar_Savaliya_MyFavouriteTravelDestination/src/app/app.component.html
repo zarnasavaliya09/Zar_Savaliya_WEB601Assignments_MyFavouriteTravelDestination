@@ -358,5 +358,28 @@
 
 <router-outlet>
   <!-- <app-content-card></app-content-card> -->
-  <app-content-list></app-content-list>
+  <app-messages></app-messages>
+  <label for="contentId">Enter Content ID: </label>
+      <input type="text" id="contentId" [(ngModel)]="requestedContentId">
+      <button (click)="getRequestedContent()">Get Content</button>
+  <div class="topContent">
+    <div class="c-card">
+        <h1 [innerHTML]="singleContentItem?.title"></h1>
+        <p [innerHTML]="singleContentItem?.description"></p>
+        <p [innerHTML]="singleContentItem?.creator"></p>
+        <p [innerHTML]="singleContentItem?.type" appHoverAffect [affectStyle]="'underline'"></p>
+        <div>
+            <span *ngFor="let tag of singleContentItem?.tags" appHoverAffect [affectStyle]="'bold'" >{{tag}}, </span>
+        </div>
+        <div *ngIf="singleContentItem?.imgURL; else noImage">
+            <img [src]="singleContentItem?.imgURL"  height="700px" width="100%">
+        </div>
+        <ng-template #noImage>
+          <img src="../../assets/image/wallpaper.jpg" width="100%" height="70%">
+        </ng-template>
+    </div>
+</div>
+   
+  
+  <app-content-list></app-content-list> 
 </router-outlet>
