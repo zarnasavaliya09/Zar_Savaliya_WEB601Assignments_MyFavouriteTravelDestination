@@ -1,4 +1,10 @@
 <p>content-list works!</p>
+<!-- content-list.component.html -->
+
+<app-modify-content-component (contentAdded)="handleContentAdded($event)"></app-modify-content-component>
+
+<!-- Existing content list markup -->
+...
 
 <div>
   <label for="searchTitle">Search Title:</label>

@@ -36,4 +36,6 @@ export class ContentCardComponent {
       tags: ['beach', 'mountain', 'water']
     });
   }
+    
+  
 }
