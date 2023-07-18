@@ -5,5 +5,7 @@
     <input [(ngModel)]="newContent.type" placeholder="type" />
     
 
-    <button (click)="addOrUpdateContent()">{{ buttonText }}</button>
+    <button (click)="addOrUpdateContent()">{{ buttonText }}</button><br><br>
+    <button mat-flat-button color="accent" (click)="openAddContentDialog()">Add New Content</button>
+
 </div>

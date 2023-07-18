@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
-import { InMemoryDataService } from '../services/in-memory-data.service';
 import { MessageService } from '../services/message.service';
 import { TravelDestinationService } from '../services/travel-destination.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AddContentDialogComponentComponent } from '../add-content-dialog-component/add-content-dialog-component.component';
 
 @Component({
   selector: 'app-modify-content-component',
@@ -12,12 +13,32 @@ import { TravelDestinationService } from '../services/travel-destination.service
 export class ModifyContentComponentComponent {
   newContent: Content = { id: null, title: '', description: '', creator: '',type:'' };
   buttonText = 'Add Content';
+  dialogRef: MatDialogRef<AddContentDialogComponentComponent> | undefined;
+
   @Output() contentAdded: EventEmitter<Content> = new EventEmitter<Content>();
 
 
-  constructor(private travelDestinationService: TravelDestinationService,private messageService: MessageService){}
+  constructor(private travelDestinationService: TravelDestinationService,
+    private messageService: MessageService,
+    public dialog: MatDialog){}
 
- 
+  openAddContentDialog() {
+    this.dialogRef = this.dialog.open(AddContentDialogComponentComponent, {
+      disableClose: true,
+      width: '400px'
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        //this.addContent(result);
+        this.travelDestinationService.addContent(result).subscribe((content) => {
+          this.contentAdded.emit(content);
+          this.clearInputs();
+          this.messageService.addMessage('Content added successfully.');
+        });
+      }
+    });
+  }
   addOrUpdateContent(): void {
     if (!this.newContent.id) {
       this.addContent();

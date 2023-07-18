@@ -14,6 +14,12 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModifyContentComponentComponent } from './modify-content-component/modify-content-component.component';
 import { MessageService } from './services/message.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { AddContentDialogComponentComponent } from './add-content-dialog-component/add-content-dialog-component.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -25,6 +31,7 @@ import { MessageService } from './services/message.service';
     HoverAffectDirective,
     AppMessagesComponent,
     ModifyContentComponentComponent,
+    AddContentDialogComponentComponent,
     
   ],
   imports: [
@@ -36,6 +43,12 @@ import { MessageService } from './services/message.service';
       dataEncapsulation: false,
       delay: 1000,
     }),
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
+   
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
