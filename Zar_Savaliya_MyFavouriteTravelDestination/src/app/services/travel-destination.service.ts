@@ -35,6 +35,9 @@ export class TravelDestinationService {
     }
   }
 
+  getContentById(id: number): Content | undefined {
+    return contentListArray.find((item) => item.id == id);
+  }
   getContent(): Observable<Content[]> {
     console.log('1a');
     return this.http.get<Content[]>('api/content');

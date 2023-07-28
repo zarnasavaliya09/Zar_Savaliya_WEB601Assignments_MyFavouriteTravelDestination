@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TravelDestinationService } from '../services/travel-destination.service';
 import { Content } from '../helper-files/content-interface';
 import { InMemoryDataService } from '../services/in-memory-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-content-list',
@@ -12,7 +13,9 @@ export class ContentListComponent implements OnInit {
   
   contentListArray: Content[] = [];
 
-  constructor(private traveldestinationService:TravelDestinationService,private inMemoryDataService:InMemoryDataService){
+  constructor(private traveldestinationService:TravelDestinationService,
+    private inMemoryDataService:InMemoryDataService,
+    private router: Router){
     //this.contentListArray = contentListArray;
   }
   ngOnInit(): void {
@@ -52,5 +55,9 @@ export class ContentListComponent implements OnInit {
     } else {
       this.contentListArray.push(content);
     }
+  }
+
+  navigateToContentDetail(contentId: number) {
+    this.router.navigate(['/detail', contentId]);
   }
 }

@@ -15,11 +15,11 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    const idNumber = 3;
-    this.traveldestinationService.getContentItemById(idNumber).subscribe((data)=>{
-        this.singleContentItem = data;
-        console.log('singleContentItem', this.singleContentItem);
-    });
+    // const idNumber = 3;
+    // this.traveldestinationService.getContentItemById(idNumber).subscribe((data)=>{
+    //     this.singleContentItem = data;
+    //     console.log('singleContentItem', this.singleContentItem);
+    // });
   }
 
   getRequestedContent() {

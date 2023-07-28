@@ -1,6 +1,6 @@
 {
   "name": "zar-savaliya-my-favourite-travel-destination",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
