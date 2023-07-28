@@ -22,7 +22,7 @@ export class ContentDetailComponent {
     this.route.paramMap.subscribe((params) => {
       const contentId = Number(params.get('id'));
       console.log('contentIdqq',contentId);
-      this.singleContentItem = this.traveldestinationService.getContentById(contentId);
+      this.singleContentItem = this.traveldestinationService.getContentItemById(contentId);
 
       console.log("singleContentItemjd",this.singleContentItem);
     });
